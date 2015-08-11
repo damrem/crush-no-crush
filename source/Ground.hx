@@ -15,8 +15,8 @@ class Ground extends FlxSpriteGroup
 	{
 		super(X, Y, MaxSize);
 		
-		var g0 = new FlxSprite(0, 200);
-		g0.makeGraphic(4000, 20);
+		var g0 = new FlxSprite();
+		g0.makeGraphic(400, 200);
 		
 		g0.immovable = true;
 		
