@@ -66,7 +66,7 @@ class Main extends Sprite
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 		
-		//FlxG.debugger.visible = true;
+		FlxG.debugger.visible = true;
 		//FlxG.log.redirectTraces = true;
 	}
 }

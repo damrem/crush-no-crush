@@ -17,7 +17,7 @@ import msignal.Signal.Signal0;
 class SteppingHero extends FlxSpriteGroup
 {
 	var isControlled:Bool;
-	var state:HeroState;
+	public var state:HeroState;
 	
 	static public inline var LEG_WIDTH:Int = 16;
 	static public inline var LEG_HEIGHT:Int= 48;
@@ -25,7 +25,7 @@ class SteppingHero extends FlxSpriteGroup
 	static public inline var STEP_LENGTH:Int= 128;
 	static public inline var STEP_HALFLENGTH:Float= STEP_LENGTH / 2;
 	static public inline var STEP_HEIGHT:Float = STEP_LENGTH / 2;
-	static public inline var STEP_DURATION:Float= 0.25;
+	static public inline var STEP_DURATION:Float= 0.5;
 	
 	static public inline var BODY_WIDTH:Float= STEP_HALFLENGTH + LEG_WIDTH;
 	static public inline var BODY_HALFWIDTH:Float= BODY_WIDTH / 2;
@@ -40,7 +40,7 @@ class SteppingHero extends FlxSpriteGroup
 	var frontLeg:Rect;
 	
 	public var body:Rect;
-	var head:Rect;
+	public var head:Rect;
 	
 	public var onStep:Signal0;
 
@@ -70,10 +70,10 @@ class SteppingHero extends FlxSpriteGroup
 		updateBody();
 		add(body);
 		
-		head = new Rect(HEAD_WIDTH, HEAD_HEIGHT, 0xff0000);
+		head = new Rect(HEAD_WIDTH, HEAD_HEIGHT);
 		updateHead();
 		add(head);
-		
+		 
 	}
 	
 	function updateBody() 
@@ -83,6 +83,7 @@ class SteppingHero extends FlxSpriteGroup
 		body.y = (leftLeg.y + rightLeg.y) / 4 - BODY_HEIGHT;// - LEG_HEIGHT;
 		//body.width = Math.abs(rightLeg.x - leftLeg.x) + LEG_WIDTH;
 		body.scale.x = (Math.abs(rightLeg.x - leftLeg.x) + LEG_WIDTH) / BODY_WIDTH;
+		
 	}
 	
 	function updateHead()
@@ -153,6 +154,17 @@ class SteppingHero extends FlxSpriteGroup
 			backLeg = leftLeg;
 			frontLeg = rightLeg;
 		}
+		
+		#if debug
+		backLeg.color = 0xffff0000;
+		frontLeg.color = 0xff00ff00;
+		#end
+		
+		body.x -= STEP_LENGTH;
+		backLeg.x -= STEP_LENGTH;
+		frontLeg.x -= STEP_LENGTH;
+		x += STEP_LENGTH;
+		
 	}
 	
 	public function isSteppingDown():Bool

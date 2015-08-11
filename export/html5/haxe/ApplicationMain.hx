@@ -38,8 +38,24 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("assets/images/images-go-here.txt");
-		types.push (lime.Assets.AssetType.TEXT);
+		urls.push ("assets/images/bg1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/bg2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/bg3.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/bg4.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/bg5.png");
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/music/music-goes-here.txt");
@@ -48,6 +64,54 @@ class ApplicationMain {
 		
 		urls.push ("assets/sounds/sounds-go-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/sounds/step1.sfs");
+		types.push (lime.Assets.AssetType.BINARY);
+		
+		
+		urls.push ("assets/sounds/step1.wav");
+		types.push (lime.Assets.AssetType.SOUND);
+		
+		
+		urls.push ("assets/sounds/step2.sfs");
+		types.push (lime.Assets.AssetType.BINARY);
+		
+		
+		urls.push ("assets/sounds/step2.wav");
+		types.push (lime.Assets.AssetType.SOUND);
+		
+		
+		urls.push ("assets/sounds/step3.sfs");
+		types.push (lime.Assets.AssetType.BINARY);
+		
+		
+		urls.push ("assets/sounds/step3.wav");
+		types.push (lime.Assets.AssetType.SOUND);
+		
+		
+		urls.push ("assets/sounds/step4.sfs");
+		types.push (lime.Assets.AssetType.BINARY);
+		
+		
+		urls.push ("assets/sounds/step4.wav");
+		types.push (lime.Assets.AssetType.SOUND);
+		
+		
+		urls.push ("assets/sounds/step5.sfs");
+		types.push (lime.Assets.AssetType.BINARY);
+		
+		
+		urls.push ("assets/sounds/step5.wav");
+		types.push (lime.Assets.AssetType.SOUND);
+		
+		
+		urls.push ("assets/sounds/step6.sfs");
+		types.push (lime.Assets.AssetType.BINARY);
+		
+		
+		urls.push ("assets/sounds/step6.wav");
+		types.push (lime.Assets.AssetType.SOUND);
 		
 		
 		urls.push ("assets/sounds/beep.mp3");

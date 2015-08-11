@@ -28,12 +28,44 @@ ApplicationMain.create = function() {
 	var types = [];
 	urls.push("assets/data/data-goes-here.txt");
 	types.push("TEXT");
-	urls.push("assets/images/images-go-here.txt");
-	types.push("TEXT");
+	urls.push("assets/images/bg1.png");
+	types.push("IMAGE");
+	urls.push("assets/images/bg2.png");
+	types.push("IMAGE");
+	urls.push("assets/images/bg3.png");
+	types.push("IMAGE");
+	urls.push("assets/images/bg4.png");
+	types.push("IMAGE");
+	urls.push("assets/images/bg5.png");
+	types.push("IMAGE");
 	urls.push("assets/music/music-goes-here.txt");
 	types.push("TEXT");
 	urls.push("assets/sounds/sounds-go-here.txt");
 	types.push("TEXT");
+	urls.push("assets/sounds/step1.sfs");
+	types.push("BINARY");
+	urls.push("assets/sounds/step1.wav");
+	types.push("SOUND");
+	urls.push("assets/sounds/step2.sfs");
+	types.push("BINARY");
+	urls.push("assets/sounds/step2.wav");
+	types.push("SOUND");
+	urls.push("assets/sounds/step3.sfs");
+	types.push("BINARY");
+	urls.push("assets/sounds/step3.wav");
+	types.push("SOUND");
+	urls.push("assets/sounds/step4.sfs");
+	types.push("BINARY");
+	urls.push("assets/sounds/step4.wav");
+	types.push("SOUND");
+	urls.push("assets/sounds/step5.sfs");
+	types.push("BINARY");
+	urls.push("assets/sounds/step5.wav");
+	types.push("SOUND");
+	urls.push("assets/sounds/step6.sfs");
+	types.push("BINARY");
+	urls.push("assets/sounds/step6.wav");
+	types.push("SOUND");
 	urls.push("assets/sounds/beep.mp3");
 	types.push("MUSIC");
 	urls.push("assets/sounds/flixel.mp3");
@@ -1217,6 +1249,7 @@ Main.prototype = $extend(openfl_display_Sprite.prototype,{
 			this.gameHeight = Math.ceil(stageHeight / this.zoom);
 		}
 		this.addChild(new flixel_FlxGame(this.gameWidth,this.gameHeight,this.initialState,this.zoom,this.framerate,this.framerate,this.skipSplash,this.startFullscreen));
+		flixel_FlxG["debugger"].visible = true;
 	}
 	,__class__: Main
 });
@@ -1299,15 +1332,63 @@ var DefaultAssetLibrary = function() {
 	id = "assets/data/data-goes-here.txt";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
-	id = "assets/images/images-go-here.txt";
+	id = "assets/images/bg1.png";
 	this.path.set(id,id);
-	this.type.set(id,"TEXT");
+	this.type.set(id,"IMAGE");
+	id = "assets/images/bg2.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/bg3.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/bg4.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/bg5.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
 	id = "assets/music/music-goes-here.txt";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
 	id = "assets/sounds/sounds-go-here.txt";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
+	id = "assets/sounds/step1.sfs";
+	this.path.set(id,id);
+	this.type.set(id,"BINARY");
+	id = "assets/sounds/step1.wav";
+	this.path.set(id,id);
+	this.type.set(id,"SOUND");
+	id = "assets/sounds/step2.sfs";
+	this.path.set(id,id);
+	this.type.set(id,"BINARY");
+	id = "assets/sounds/step2.wav";
+	this.path.set(id,id);
+	this.type.set(id,"SOUND");
+	id = "assets/sounds/step3.sfs";
+	this.path.set(id,id);
+	this.type.set(id,"BINARY");
+	id = "assets/sounds/step3.wav";
+	this.path.set(id,id);
+	this.type.set(id,"SOUND");
+	id = "assets/sounds/step4.sfs";
+	this.path.set(id,id);
+	this.type.set(id,"BINARY");
+	id = "assets/sounds/step4.wav";
+	this.path.set(id,id);
+	this.type.set(id,"SOUND");
+	id = "assets/sounds/step5.sfs";
+	this.path.set(id,id);
+	this.type.set(id,"BINARY");
+	id = "assets/sounds/step5.wav";
+	this.path.set(id,id);
+	this.type.set(id,"SOUND");
+	id = "assets/sounds/step6.sfs";
+	this.path.set(id,id);
+	this.type.set(id,"BINARY");
+	id = "assets/sounds/step6.wav";
+	this.path.set(id,id);
+	this.type.set(id,"SOUND");
 	id = "assets/sounds/beep.mp3";
 	this.path.set(id,id);
 	this.type.set(id,"MUSIC");
@@ -1558,28 +1639,6 @@ _$_$ASSET_$_$assets_$fonts_$arial_$ttf.__super__ = lime_text_Font;
 _$_$ASSET_$_$assets_$fonts_$arial_$ttf.prototype = $extend(lime_text_Font.prototype,{
 	__class__: _$_$ASSET_$_$assets_$fonts_$arial_$ttf
 });
-var EReg = function(r,opt) {
-	opt = opt.split("u").join("");
-	this.r = new RegExp(r,opt);
-};
-$hxClasses["EReg"] = EReg;
-EReg.__name__ = ["EReg"];
-EReg.prototype = {
-	r: null
-	,match: function(s) {
-		if(this.r.global) this.r.lastIndex = 0;
-		this.r.m = this.r.exec(s);
-		this.r.s = s;
-		return this.r.m != null;
-	}
-	,matched: function(n) {
-		if(this.r.m != null && n >= 0 && n < this.r.m.length) return this.r.m[n]; else throw new js__$Boot_HaxeError("EReg::matched");
-	}
-	,replace: function(s,by) {
-		return s.replace(this.r,by);
-	}
-	,__class__: EReg
-};
 var flixel_interfaces_IFlxDestroyable = function() { };
 $hxClasses["flixel.interfaces.IFlxDestroyable"] = flixel_interfaces_IFlxDestroyable;
 flixel_interfaces_IFlxDestroyable.__name__ = ["flixel","interfaces","IFlxDestroyable"];
@@ -2915,6 +2974,52 @@ flixel_FlxSprite.prototype = $extend(flixel_FlxObject.prototype,{
 	,__class__: flixel_FlxSprite
 	,__properties__: $extend(flixel_FlxObject.prototype.__properties__,{set_color:"set_color",set_blend:"set_blend",set_flipY:"set_flipY",set_flipX:"set_flipX",set_facing:"set_facing",set_alpha:"set_alpha",set_cachedGraphics:"set_cachedGraphics",set_frame:"set_frame",set_pixels:"set_pixels",get_pixels:"get_pixels"})
 });
+var Rect = function(Width,Height,Color) {
+	if(Color == null) Color = -1;
+	if(Height == null) Height = 0;
+	if(Width == null) Width = 0;
+	flixel_FlxSprite.call(this);
+	this.makeGraphic(Width,Height,Color);
+};
+$hxClasses["Rect"] = Rect;
+Rect.__name__ = ["Rect"];
+Rect.__super__ = flixel_FlxSprite;
+Rect.prototype = $extend(flixel_FlxSprite.prototype,{
+	__class__: Rect
+});
+var Dwarf = function(X,Y) {
+	if(Y == null) Y = 0;
+	if(X == null) X = 0;
+	Rect.call(this,flixel_util_FlxRandom.intRanged(10,20),flixel_util_FlxRandom.intRanged(10,20),-16777216 + flixel_util_FlxRandom.intRanged(0,16777215));
+};
+$hxClasses["Dwarf"] = Dwarf;
+Dwarf.__name__ = ["Dwarf"];
+Dwarf.__super__ = Rect;
+Dwarf.prototype = $extend(Rect.prototype,{
+	__class__: Dwarf
+});
+var EReg = function(r,opt) {
+	opt = opt.split("u").join("");
+	this.r = new RegExp(r,opt);
+};
+$hxClasses["EReg"] = EReg;
+EReg.__name__ = ["EReg"];
+EReg.prototype = {
+	r: null
+	,match: function(s) {
+		if(this.r.global) this.r.lastIndex = 0;
+		this.r.m = this.r.exec(s);
+		this.r.s = s;
+		return this.r.m != null;
+	}
+	,matched: function(n) {
+		if(this.r.m != null && n >= 0 && n < this.r.m.length) return this.r.m[n]; else throw new js__$Boot_HaxeError("EReg::matched");
+	}
+	,replace: function(s,by) {
+		return s.replace(this.r,by);
+	}
+	,__class__: EReg
+};
 var flixel_group_FlxTypedSpriteGroup = function(X,Y,MaxSize) {
 	if(MaxSize == null) MaxSize = 0;
 	if(Y == null) Y = 0;
@@ -3510,8 +3615,8 @@ var Ground = function(X,Y,MaxSize) {
 	if(Y == null) Y = 0;
 	if(X == null) X = 0;
 	flixel_group_FlxSpriteGroup.call(this,X,Y,MaxSize);
-	var g0 = new flixel_FlxSprite(0,200);
-	g0.makeGraphic(4000,20);
+	var g0 = new flixel_FlxSprite();
+	g0.makeGraphic(400,200);
 	g0.set_immovable(true);
 	this.add(g0);
 };
@@ -3520,21 +3625,6 @@ Ground.__name__ = ["Ground"];
 Ground.__super__ = flixel_group_FlxSpriteGroup;
 Ground.prototype = $extend(flixel_group_FlxSpriteGroup.prototype,{
 	__class__: Ground
-});
-var Hero = function(X,Y,MaxSize) {
-	if(MaxSize == null) MaxSize = 0;
-	if(Y == null) Y = 0;
-	if(X == null) X = 0;
-	flixel_group_FlxSpriteGroup.call(this,X,Y,MaxSize);
-	var body = new flixel_FlxSprite();
-	body.makeGraphic(50,100,-1,true,"hero");
-	this.add(body);
-};
-$hxClasses["Hero"] = Hero;
-Hero.__name__ = ["Hero"];
-Hero.__super__ = flixel_group_FlxSpriteGroup;
-Hero.prototype = $extend(flixel_group_FlxSpriteGroup.prototype,{
-	__class__: Hero
 });
 var HxOverrides = function() { };
 $hxClasses["HxOverrides"] = HxOverrides;
@@ -4105,26 +4195,67 @@ PlayState.__super__ = flixel_FlxState;
 PlayState.prototype = $extend(flixel_FlxState.prototype,{
 	hero: null
 	,ground: null
+	,dwarves: null
+	,worldDebug: null
 	,create: function() {
-		flixel_FlxState.prototype.create.call(this);
-		this.hero = new Hero();
-		this.hero.drag.set_x(1000);
-		this.hero.acceleration.set_y(200);
+		this.add(new flixel_addons_display_FlxBackdrop("assets/images/bg4.png",0.1,0.0,true,false));
+		this.add(new flixel_addons_display_FlxBackdrop("assets/images/bg3.png",0.2,0.0,true,false));
+		this.add(new flixel_addons_display_FlxBackdrop("assets/images/bg2.png",0.4,0.0,true,false));
+		this.add(new flixel_addons_display_FlxBackdrop("assets/images/bg1.png",0.8,0.0,true,false));
+		this.hero = new SteppingHero();
 		this.add(this.hero);
-		this.ground = new Ground();
-		this.add(this.ground);
+		flixel_FlxG.worldBounds.y = this.hero.y - this.hero.backLeg.get_width();
+		flixel_FlxG.worldBounds.width = this.hero.backLeg.get_width() * 2;
+		flixel_FlxG.worldBounds.height = this.hero.backLeg.get_width() * 2;
+		var poolSize = 100;
+		this.dwarves = new flixel_group_FlxTypedGroup(poolSize);
+		this.hero.onStep.add($bind(this,this.shake));
+		var _g = 0;
+		while(_g < poolSize) {
+			var i = _g++;
+			var dwarf = new Dwarf();
+			dwarf.kill();
+			this.dwarves.add(dwarf);
+		}
+		this.add(this.dwarves);
+		flixel_FlxG.camera.follow(this.hero.head,1,new flixel_util_FlxPoint(-250,0),10);
+		flixel_FlxState.prototype.create.call(this);
+	}
+	,shake: function() {
+		flixel_FlxG.camera.shake(0.01,0.1,null,true,2);
+		flixel_FlxG.sound.play("assets/sounds/step" + flixel_util_FlxRandom.intRanged(1,6) + ".wav");
 	}
 	,destroy: function() {
 		flixel_FlxState.prototype.destroy.call(this);
 	}
 	,update: function() {
-		this.hero.acceleration.set_x(0);
-		if(flixel_FlxG.keys.checkStatus(32,flixel_FlxG.keys.pressed.checkStatus)) {
-			var _g = this.hero.acceleration;
-			_g.set_x(_g.x + this.hero.drag.x);
-		}
+		this.generateDwarves();
+		this.handleControls();
+		flixel_FlxG.worldBounds.x = this.hero.backLeg.x;
+		flixel_FlxG.overlap(this.hero.backLeg,this.dwarves,$bind(this,this.killDwarf));
 		flixel_FlxState.prototype.update.call(this);
-		flixel_FlxG.overlap(this.hero,this.ground,null,flixel_FlxObject.separate);
+	}
+	,debugWorld: function() {
+		this.worldDebug.set_x(flixel_FlxG.worldBounds.x);
+		this.worldDebug.set_y(flixel_FlxG.worldBounds.y);
+		this.worldDebug.set_width(flixel_FlxG.worldBounds.width);
+		this.worldDebug.set_height(flixel_FlxG.worldBounds.height);
+	}
+	,generateDwarves: function() {
+		var chance;
+		if(this.hero.state == HeroState.Stepping) chance = 5; else chance = 1;
+		if(flixel_util_FlxRandom.floatRanged(0,100) < chance) {
+			var dwarf = this.dwarves.recycle(Dwarf);
+			dwarf.setPosition(this.hero.body.x + 640,-dwarf.get_height());
+			dwarf.velocity.set_x(flixel_util_FlxRandom.intRanged(-10,-30));
+			this.add(dwarf);
+		}
+	}
+	,killDwarf: function(leg,dwarf) {
+		if(this.hero.isSteppingDown()) dwarf.set_y(100);
+	}
+	,handleControls: function() {
+		if(flixel_FlxG.keys.checkStatus(32,flixel_FlxG.keys.pressed.checkStatus)) this.hero.advance();
 	}
 	,__class__: PlayState
 });
@@ -4215,6 +4346,121 @@ Std.parseInt = function(x) {
 Std.parseFloat = function(x) {
 	return parseFloat(x);
 };
+var SteppingHero = function() {
+	flixel_group_FlxSpriteGroup.call(this);
+	this.onStep = new msignal_Signal0();
+	this.state = HeroState.Standing;
+	this.leftLeg = this.backLeg = new Rect(16,96);
+	var _g = this.leftLeg;
+	_g.set_x(_g.x - 32.);
+	var _g1 = this.leftLeg;
+	_g1.set_y(_g1.y - 96);
+	this.add(this.leftLeg);
+	this.rightLeg = this.frontLeg = new Rect(16,96);
+	var _g2 = this.rightLeg;
+	_g2.set_x(_g2.x + 32.);
+	var _g3 = this.rightLeg;
+	_g3.set_y(_g3.y - 96);
+	this.add(this.rightLeg);
+	this.body = new Rect(80.,160.);
+	this.updateBody();
+	this.add(this.body);
+	this.head = new Rect(32,64);
+	this.updateHead();
+	this.add(this.head);
+};
+$hxClasses["SteppingHero"] = SteppingHero;
+SteppingHero.__name__ = ["SteppingHero"];
+SteppingHero.__super__ = flixel_group_FlxSpriteGroup;
+SteppingHero.prototype = $extend(flixel_group_FlxSpriteGroup.prototype,{
+	isControlled: null
+	,state: null
+	,leftLeg: null
+	,rightLeg: null
+	,backLeg: null
+	,frontLeg: null
+	,body: null
+	,head: null
+	,onStep: null
+	,prevBackLegY: null
+	,updateBody: function() {
+		this.body.set_x((this.leftLeg.x + this.rightLeg.x) / 2 - 32);
+		this.body.set_y((this.leftLeg.y + this.rightLeg.y) / 4 - 160.);
+		this.body.scale.set_x((Math.abs(this.rightLeg.x - this.leftLeg.x) + 16) / 80.);
+	}
+	,updateHead: function() {
+		this.head.set_x(this.body.x + (this.body.get_width() - 32) / 2);
+		this.head.set_y(this.body.y - 64);
+	}
+	,advance: function() {
+		var _g = this.state;
+		switch(_g[1]) {
+		case 0:
+			this.step();
+			break;
+		case 2:
+			break;
+		case 1:
+			this.state = HeroState.Stepping;
+			motion_Actuate.resume(this.backLeg);
+			break;
+		}
+	}
+	,freeze: function() {
+		if(this.state == HeroState.Stepping) {
+			this.state = HeroState.Freezing;
+			motion_Actuate.pause(this.backLeg);
+		}
+	}
+	,step: function() {
+		this.state = HeroState.Stepping;
+		var path = new motion_MotionPath().bezier(this.backLeg.x + 128,this.backLeg.y,this.backLeg.x + 64.,this.backLeg.y - 64.);
+		motion_Actuate.motionPath(this.backLeg,0.5,{ x : path.get_x(), y : path.get_y()}).ease(motion_easing_Linear.get_easeNone()).onUpdate($bind(this,this.update)).onComplete($bind(this,this.finishStep));
+	}
+	,update: function() {
+		this.updateBody();
+		this.updateHead();
+		this.prevBackLegY = this.backLeg.y;
+		flixel_group_FlxSpriteGroup.prototype.update.call(this);
+	}
+	,finishStep: function() {
+		this.state = HeroState.Standing;
+		this.onStep.dispatch();
+		if(this.backLeg == this.leftLeg) {
+			this.backLeg = this.rightLeg;
+			this.frontLeg = this.leftLeg;
+		} else {
+			this.backLeg = this.leftLeg;
+			this.frontLeg = this.rightLeg;
+		}
+		var _g = this.body;
+		_g.set_x(_g.x - 128);
+		var _g1 = this.backLeg;
+		_g1.set_x(_g1.x - 128);
+		var _g2 = this.frontLeg;
+		_g2.set_x(_g2.x - 128);
+		var _g3 = this;
+		_g3.set_x(_g3.x + 128);
+	}
+	,isSteppingDown: function() {
+		return this.state == HeroState.Stepping && this.backLeg.x > this.frontLeg.x;
+	}
+	,getBackLegHRange: function() {
+		var range = new hxlpers_Range(this.backLeg.x,this.backLeg.x + 16);
+		return range;
+	}
+	,__class__: SteppingHero
+});
+var HeroState = $hxClasses["HeroState"] = { __ename__ : ["HeroState"], __constructs__ : ["Standing","Freezing","Stepping"] };
+HeroState.Standing = ["Standing",0];
+HeroState.Standing.toString = $estr;
+HeroState.Standing.__enum__ = HeroState;
+HeroState.Freezing = ["Freezing",1];
+HeroState.Freezing.toString = $estr;
+HeroState.Freezing.__enum__ = HeroState;
+HeroState.Stepping = ["Stepping",2];
+HeroState.Stepping.toString = $estr;
+HeroState.Stepping.__enum__ = HeroState;
 var StringBuf = function() {
 	this.b = "";
 };
@@ -8465,6 +8711,78 @@ flixel_FlxSubState.prototype = $extend(flixel_FlxState.prototype,{
 		return this._bgColor = Value;
 	}
 	,__class__: flixel_FlxSubState
+});
+var flixel_addons_display_FlxBackdrop = function(Graphic,ScrollX,ScrollY,RepeatX,RepeatY) {
+	if(RepeatY == null) RepeatY = true;
+	if(RepeatX == null) RepeatX = true;
+	if(ScrollY == null) ScrollY = 1;
+	if(ScrollX == null) ScrollX = 1;
+	flixel_FlxSprite.call(this);
+	this.set_cachedGraphics(flixel_FlxG.bitmap.addWithSpaces(Graphic,0,0,1,1,false,null));
+	if(!js_Boot.__instanceof(Graphic,flixel_util_loaders_TextureRegion)) {
+		this.region = new flixel_system_layer_Region(0,0,this.cachedGraphics.bitmap.width,this.cachedGraphics.bitmap.height);
+		this.region.width = this.cachedGraphics.bitmap.width;
+		this.region.height = this.cachedGraphics.bitmap.height;
+	} else this.region = (js_Boot.__cast(Graphic , flixel_util_loaders_TextureRegion)).region.clone();
+	var w = this.region.width;
+	var h = this.region.height;
+	if(RepeatX) w += flixel_FlxG.width;
+	if(RepeatY) h += flixel_FlxG.height;
+	this._data = new openfl_display_BitmapData(w,h);
+	this._ppoint = new openfl_geom_Point();
+	this._scrollW = this.region.width;
+	this._scrollH = this.region.height;
+	this._repeatX = RepeatX;
+	this._repeatY = RepeatY;
+	var regionRect = new openfl_geom_Rectangle(this.region.startX,this.region.startY,this.region.width,this.region.height);
+	while(this._ppoint.y < h) {
+		while(this._ppoint.x < w) {
+			this._data.copyPixels(this.cachedGraphics.bitmap,regionRect,this._ppoint);
+			this._ppoint.x += this.region.width;
+		}
+		this._ppoint.x = 0;
+		this._ppoint.y += this.region.height;
+	}
+	this.scrollFactor.set_x(ScrollX);
+	this.scrollFactor.set_y(ScrollY);
+	this.updateFrameData();
+};
+$hxClasses["flixel.addons.display.FlxBackdrop"] = flixel_addons_display_FlxBackdrop;
+flixel_addons_display_FlxBackdrop.__name__ = ["flixel","addons","display","FlxBackdrop"];
+flixel_addons_display_FlxBackdrop.__super__ = flixel_FlxSprite;
+flixel_addons_display_FlxBackdrop.prototype = $extend(flixel_FlxSprite.prototype,{
+	_ppoint: null
+	,_scrollW: null
+	,_scrollH: null
+	,_repeatX: null
+	,_repeatY: null
+	,_data: null
+	,destroy: function() {
+		this._data = flixel_util_FlxDestroyUtil.dispose(this._data);
+		this._ppoint = null;
+		flixel_FlxSprite.prototype.destroy.call(this);
+	}
+	,draw: function() {
+		var _g = 0;
+		var _g1 = this.get_cameras();
+		while(_g < _g1.length) {
+			var camera = _g1[_g];
+			++_g;
+			if(!camera.visible || !camera.exists) continue;
+			if(this._repeatX) {
+				this._ppoint.x = (this.x - camera.scroll.x * this.scrollFactor.x) % this._scrollW;
+				if(this._ppoint.x > 0) this._ppoint.x -= this._scrollW;
+			} else this._ppoint.x = this.x - camera.scroll.x * this.scrollFactor.x;
+			if(this._repeatY) {
+				this._ppoint.y = (this.y - camera.scroll.y * this.scrollFactor.y) % this._scrollH;
+				if(this._ppoint.y > 0) this._ppoint.y -= this._scrollH;
+			} else this._ppoint.y = this.y - camera.scroll.y * this.scrollFactor.y;
+			camera.buffer.copyPixels(this._data,this._data.rect,this._ppoint,null,null,true);
+		}
+	}
+	,updateFrameData: function() {
+	}
+	,__class__: flixel_addons_display_FlxBackdrop
 });
 var flixel_animation_FlxBaseAnimation = function(Parent,Name) {
 	this.curIndex = 0;
@@ -16449,33 +16767,7 @@ flixel_util_FlxArrayUtil.fastSplice_flixel_text_FlxTextFormat = function(array,e
 	}
 	return array;
 };
-flixel_util_FlxArrayUtil.setLength_flixel_system_replay_FrameRecord = function(array,newLength) {
-	if(newLength < 0) return;
-	var oldLength = array.length;
-	var diff = newLength - oldLength;
-	if(diff < 0) {
-		diff = -diff;
-		var _g = 0;
-		while(_g < diff) {
-			var i = _g++;
-			array.pop();
-		}
-	}
-};
 flixel_util_FlxArrayUtil.setLength_flixel_group_FlxTypedGroup_T = function(array,newLength) {
-	if(newLength < 0) return;
-	var oldLength = array.length;
-	var diff = newLength - oldLength;
-	if(diff < 0) {
-		diff = -diff;
-		var _g = 0;
-		while(_g < diff) {
-			var i = _g++;
-			array.pop();
-		}
-	}
-};
-flixel_util_FlxArrayUtil.setLength_flixel_input_keyboard_FlxKey = function(array,newLength) {
 	if(newLength < 0) return;
 	var oldLength = array.length;
 	var diff = newLength - oldLength;
@@ -16519,7 +16811,33 @@ flixel_util_FlxArrayUtil.setLength_openfl_geom_Rectangle = function(array,newLen
 		}
 	}
 };
-flixel_util_FlxArrayUtil.fastSplice_flixel_tweens_FlxTween = function(array,element) {
+flixel_util_FlxArrayUtil.setLength_flixel_input_keyboard_FlxKey = function(array,newLength) {
+	if(newLength < 0) return;
+	var oldLength = array.length;
+	var diff = newLength - oldLength;
+	if(diff < 0) {
+		diff = -diff;
+		var _g = 0;
+		while(_g < diff) {
+			var i = _g++;
+			array.pop();
+		}
+	}
+};
+flixel_util_FlxArrayUtil.setLength_flixel_system_replay_FrameRecord = function(array,newLength) {
+	if(newLength < 0) return;
+	var oldLength = array.length;
+	var diff = newLength - oldLength;
+	if(diff < 0) {
+		diff = -diff;
+		var _g = 0;
+		while(_g < diff) {
+			var i = _g++;
+			array.pop();
+		}
+	}
+};
+flixel_util_FlxArrayUtil.fastSplice_flixel_util_FlxPath = function(array,element) {
 	var index = HxOverrides.indexOf(array,element,0);
 	if(index != -1) {
 		array[index] = array[array.length - 1];
@@ -16537,7 +16855,7 @@ flixel_util_FlxArrayUtil.fastSplice_flixel_util_FlxTimer = function(array,elemen
 	}
 	return array;
 };
-flixel_util_FlxArrayUtil.fastSplice_flixel_util_FlxPath = function(array,element) {
+flixel_util_FlxArrayUtil.fastSplice_flixel_tweens_FlxTween = function(array,element) {
 	var index = HxOverrides.indexOf(array,element,0);
 	if(index != -1) {
 		array[index] = array[array.length - 1];
@@ -19980,6 +20298,38 @@ haxe_io_Path.prototype = {
 		return (this.dir == null?"":this.dir + (this.backslash?"\\":"/")) + this.file + (this.ext == null?"":"." + this.ext);
 	}
 	,__class__: haxe_io_Path
+};
+var hxlpers_Range = function(Min,Max) {
+	this._min = Min;
+	this._max = Max;
+	if(this._min > this._max) {
+		var temp = this._min;
+		this._min = this._max;
+		this._max = temp;
+	}
+};
+$hxClasses["hxlpers.Range"] = hxlpers_Range;
+hxlpers_Range.__name__ = ["hxlpers","Range"];
+hxlpers_Range.prototype = {
+	_min: null
+	,min: null
+	,_max: null
+	,max: null
+	,get_min: function() {
+		return this._min;
+	}
+	,get_max: function() {
+		return this._max;
+	}
+	,add: function(offset) {
+		this._min += offset;
+		this._max += offset;
+	}
+	,toString: function() {
+		return "[object Range (" + this._min + ", " + this._max + ")]";
+	}
+	,__class__: hxlpers_Range
+	,__properties__: {get_max:"get_max",get_min:"get_min"}
 };
 var js__$Boot_HaxeError = function(val) {
 	Error.call(this);
@@ -30512,6 +30862,1523 @@ lime_utils__$UInt8Array_UInt8Array_$Impl_$.toBytes = function(this1) {
 };
 lime_utils__$UInt8Array_UInt8Array_$Impl_$.toString = function(this1) {
 	if(this1 != null) return "UInt8Array [byteLength:" + this1.byteLength + ", length:" + this1.length + "]"; else return null;
+};
+var motion_actuators_IGenericActuator = function() { };
+$hxClasses["motion.actuators.IGenericActuator"] = motion_actuators_IGenericActuator;
+motion_actuators_IGenericActuator.__name__ = ["motion","actuators","IGenericActuator"];
+motion_actuators_IGenericActuator.prototype = {
+	autoVisible: null
+	,delay: null
+	,ease: null
+	,onComplete: null
+	,onRepeat: null
+	,onUpdate: null
+	,reflect: null
+	,repeat: null
+	,reverse: null
+	,smartRotation: null
+	,snapping: null
+	,onPause: null
+	,onResume: null
+	,apply: null
+	,move: null
+	,pause: null
+	,resume: null
+	,stop: null
+	,__class__: motion_actuators_IGenericActuator
+};
+var motion_actuators_GenericActuator = function(target,duration,properties) {
+	this._autoVisible = true;
+	this._delay = 0;
+	this._reflect = false;
+	this._repeat = 0;
+	this._reverse = false;
+	this._smartRotation = false;
+	this._snapping = false;
+	this.special = false;
+	this.target = target;
+	this.properties = properties;
+	this.duration = duration;
+	this._ease = motion_Actuate.defaultEase;
+};
+$hxClasses["motion.actuators.GenericActuator"] = motion_actuators_GenericActuator;
+motion_actuators_GenericActuator.__name__ = ["motion","actuators","GenericActuator"];
+motion_actuators_GenericActuator.__interfaces__ = [motion_actuators_IGenericActuator];
+motion_actuators_GenericActuator.prototype = {
+	duration: null
+	,id: null
+	,properties: null
+	,target: null
+	,_autoVisible: null
+	,_delay: null
+	,_ease: null
+	,_onComplete: null
+	,_onCompleteParams: null
+	,_onRepeat: null
+	,_onRepeatParams: null
+	,_onUpdate: null
+	,_onUpdateParams: null
+	,_onResume: null
+	,_onResumeParams: null
+	,_onPause: null
+	,_onPauseParams: null
+	,_reflect: null
+	,_repeat: null
+	,_reverse: null
+	,_smartRotation: null
+	,_snapping: null
+	,special: null
+	,apply: function() {
+		var _g = 0;
+		var _g1 = Reflect.fields(this.properties);
+		while(_g < _g1.length) {
+			var i = _g1[_g];
+			++_g;
+			if(Object.prototype.hasOwnProperty.call(this.target,i)) Reflect.setField(this.target,i,Reflect.field(this.properties,i)); else Reflect.setProperty(this.target,i,Reflect.field(this.properties,i));
+		}
+	}
+	,autoVisible: function(value) {
+		if(value == null) value = true;
+		this._autoVisible = value;
+		return this;
+	}
+	,callMethod: function(method,params) {
+		if(params == null) params = [];
+		return Reflect.callMethod(method,method,params);
+	}
+	,change: function() {
+		if(this._onUpdate != null) this.callMethod(this._onUpdate,this._onUpdateParams);
+	}
+	,complete: function(sendEvent) {
+		if(sendEvent == null) sendEvent = true;
+		if(sendEvent) {
+			this.change();
+			if(this._onComplete != null) this.callMethod(this._onComplete,this._onCompleteParams);
+		}
+		motion_Actuate.unload(this);
+	}
+	,delay: function(duration) {
+		this._delay = duration;
+		return this;
+	}
+	,ease: function(easing) {
+		this._ease = easing;
+		return this;
+	}
+	,move: function() {
+	}
+	,onComplete: function(handler,parameters) {
+		this._onComplete = handler;
+		if(parameters == null) this._onCompleteParams = []; else this._onCompleteParams = parameters;
+		if(this.duration == 0) this.complete();
+		return this;
+	}
+	,onRepeat: function(handler,parameters) {
+		this._onRepeat = handler;
+		if(parameters == null) this._onRepeatParams = []; else this._onRepeatParams = parameters;
+		return this;
+	}
+	,onUpdate: function(handler,parameters) {
+		this._onUpdate = handler;
+		if(parameters == null) this._onUpdateParams = []; else this._onUpdateParams = parameters;
+		return this;
+	}
+	,onPause: function(handler,parameters) {
+		this._onPause = handler;
+		if(parameters == null) this._onPauseParams = []; else this._onPauseParams = parameters;
+		return this;
+	}
+	,onResume: function(handler,parameters) {
+		this._onResume = handler;
+		if(parameters == null) this._onResumeParams = []; else this._onResumeParams = parameters;
+		return this;
+	}
+	,pause: function() {
+		if(this._onPause != null) this.callMethod(this._onPause,this._onPauseParams);
+	}
+	,reflect: function(value) {
+		if(value == null) value = true;
+		this._reflect = value;
+		this.special = true;
+		return this;
+	}
+	,repeat: function(times) {
+		if(times == null) times = -1;
+		this._repeat = times;
+		return this;
+	}
+	,resume: function() {
+		if(this._onResume != null) this.callMethod(this._onResume,this._onResumeParams);
+	}
+	,reverse: function(value) {
+		if(value == null) value = true;
+		this._reverse = value;
+		this.special = true;
+		return this;
+	}
+	,smartRotation: function(value) {
+		if(value == null) value = true;
+		this._smartRotation = value;
+		this.special = true;
+		return this;
+	}
+	,snapping: function(value) {
+		if(value == null) value = true;
+		this._snapping = value;
+		this.special = true;
+		return this;
+	}
+	,stop: function(properties,complete,sendEvent) {
+	}
+	,__class__: motion_actuators_GenericActuator
+};
+var motion_actuators_SimpleActuator = function(target,duration,properties) {
+	this.active = true;
+	this.propertyDetails = [];
+	this.sendChange = false;
+	this.paused = false;
+	this.cacheVisible = false;
+	this.initialized = false;
+	this.setVisible = false;
+	this.toggleVisible = false;
+	this.startTime = openfl_Lib.getTimer() / 1000;
+	motion_actuators_GenericActuator.call(this,target,duration,properties);
+	if(!motion_actuators_SimpleActuator.addedEvent) {
+		motion_actuators_SimpleActuator.addedEvent = true;
+		openfl_Lib.current.stage.addEventListener(openfl_events_Event.ENTER_FRAME,motion_actuators_SimpleActuator.stage_onEnterFrame);
+	}
+};
+$hxClasses["motion.actuators.SimpleActuator"] = motion_actuators_SimpleActuator;
+motion_actuators_SimpleActuator.__name__ = ["motion","actuators","SimpleActuator"];
+motion_actuators_SimpleActuator.stage_onEnterFrame = function(event) {
+	var currentTime = openfl_Lib.getTimer() / 1000;
+	var actuator;
+	var j = 0;
+	var cleanup = false;
+	var _g1 = 0;
+	var _g = motion_actuators_SimpleActuator.actuatorsLength;
+	while(_g1 < _g) {
+		var i = _g1++;
+		actuator = motion_actuators_SimpleActuator.actuators[j];
+		if(actuator != null && actuator.active) {
+			if(currentTime >= actuator.timeOffset) actuator.update(currentTime);
+			j++;
+		} else {
+			motion_actuators_SimpleActuator.actuators.splice(j,1);
+			--motion_actuators_SimpleActuator.actuatorsLength;
+		}
+	}
+};
+motion_actuators_SimpleActuator.__super__ = motion_actuators_GenericActuator;
+motion_actuators_SimpleActuator.prototype = $extend(motion_actuators_GenericActuator.prototype,{
+	setField_openfl_geom_Transform: function(target,propertyName,value) {
+		if(Object.prototype.hasOwnProperty.call(target,propertyName)) target[propertyName] = value; else Reflect.setProperty(target,propertyName,value);
+	}
+	,setField_motion_actuators_TransformActuator_T: function(target,propertyName,value) {
+		if(Object.prototype.hasOwnProperty.call(target,propertyName)) target[propertyName] = value; else Reflect.setProperty(target,propertyName,value);
+	}
+	,setField_motion_actuators_MotionPathActuator_T: function(target,propertyName,value) {
+		if(Object.prototype.hasOwnProperty.call(target,propertyName)) target[propertyName] = value; else Reflect.setProperty(target,propertyName,value);
+	}
+	,setField_openfl_display_DisplayObject: function(target,propertyName,value) {
+		if(Object.prototype.hasOwnProperty.call(target,propertyName)) target[propertyName] = value; else Reflect.setProperty(target,propertyName,value);
+	}
+	,setField_motion_actuators_SimpleActuator_T: function(target,propertyName,value) {
+		if(Object.prototype.hasOwnProperty.call(target,propertyName)) target[propertyName] = value; else Reflect.setProperty(target,propertyName,value);
+	}
+	,timeOffset: null
+	,active: null
+	,cacheVisible: null
+	,detailsLength: null
+	,initialized: null
+	,paused: null
+	,pauseTime: null
+	,propertyDetails: null
+	,sendChange: null
+	,setVisible: null
+	,startTime: null
+	,toggleVisible: null
+	,autoVisible: function(value) {
+		if(value == null) value = true;
+		this._autoVisible = value;
+		if(!value) {
+			this.toggleVisible = false;
+			if(this.setVisible) this.setField_motion_actuators_SimpleActuator_T(this.target,"visible",this.cacheVisible);
+		}
+		return this;
+	}
+	,delay: function(duration) {
+		this._delay = duration;
+		this.timeOffset = this.startTime + duration;
+		return this;
+	}
+	,getField: function(target,propertyName) {
+		var value = null;
+		if(Object.prototype.hasOwnProperty.call(target,propertyName)) value = Reflect.field(target,propertyName); else value = Reflect.getProperty(target,propertyName);
+		return value;
+	}
+	,initialize: function() {
+		var details;
+		var start;
+		var _g = 0;
+		var _g1 = Reflect.fields(this.properties);
+		while(_g < _g1.length) {
+			var i = _g1[_g];
+			++_g;
+			var isField = true;
+			if(Object.prototype.hasOwnProperty.call(this.target,i) && !(this.target.__properties__ && this.target.__properties__["set_" + i])) start = Reflect.field(this.target,i); else {
+				isField = false;
+				start = Reflect.getProperty(this.target,i);
+			}
+			if(typeof(start) == "number") {
+				var value = this.getField(this.properties,i);
+				if(start == null) start = 0;
+				if(value == null) value = 0;
+				details = new motion_actuators_PropertyDetails(this.target,i,start,value - start,isField);
+				this.propertyDetails.push(details);
+			}
+		}
+		this.detailsLength = this.propertyDetails.length;
+		this.initialized = true;
+	}
+	,move: function() {
+		this.toggleVisible = Object.prototype.hasOwnProperty.call(this.properties,"alpha") && js_Boot.__instanceof(this.target,openfl_display_DisplayObject);
+		if(this.toggleVisible && this.properties.alpha != 0 && !this.getField(this.target,"visible")) {
+			this.setVisible = true;
+			this.cacheVisible = this.getField(this.target,"visible");
+			this.setField_motion_actuators_SimpleActuator_T(this.target,"visible",true);
+		}
+		this.timeOffset = this.startTime;
+		motion_actuators_SimpleActuator.actuators.push(this);
+		++motion_actuators_SimpleActuator.actuatorsLength;
+	}
+	,onUpdate: function(handler,parameters) {
+		this._onUpdate = handler;
+		if(parameters == null) this._onUpdateParams = []; else this._onUpdateParams = parameters;
+		this.sendChange = true;
+		return this;
+	}
+	,pause: function() {
+		if(!this.paused) {
+			this.paused = true;
+			motion_actuators_GenericActuator.prototype.pause.call(this);
+			this.pauseTime = openfl_Lib.getTimer();
+		}
+	}
+	,resume: function() {
+		if(this.paused) {
+			this.paused = false;
+			this.timeOffset += (openfl_Lib.getTimer() - this.pauseTime) / 1000;
+			motion_actuators_GenericActuator.prototype.resume.call(this);
+		}
+	}
+	,setProperty: function(details,value) {
+		if(details.isField) details.target[details.propertyName] = value; else Reflect.setProperty(details.target,details.propertyName,value);
+	}
+	,stop: function(properties,complete,sendEvent) {
+		if(this.active) {
+			if(properties == null) {
+				this.active = false;
+				if(complete) this.apply();
+				this.complete(sendEvent);
+				return;
+			}
+			var _g = 0;
+			var _g1 = Reflect.fields(properties);
+			while(_g < _g1.length) {
+				var i = _g1[_g];
+				++_g;
+				if(Object.prototype.hasOwnProperty.call(this.properties,i)) {
+					this.active = false;
+					if(complete) this.apply();
+					this.complete(sendEvent);
+					return;
+				}
+			}
+		}
+	}
+	,update: function(currentTime) {
+		if(!this.paused) {
+			var details;
+			var easing;
+			var i;
+			var tweenPosition = (currentTime - this.timeOffset) / this.duration;
+			if(tweenPosition > 1) tweenPosition = 1;
+			if(!this.initialized) this.initialize();
+			if(!this.special) {
+				easing = this._ease.calculate(tweenPosition);
+				var _g1 = 0;
+				var _g = this.detailsLength;
+				while(_g1 < _g) {
+					var i1 = _g1++;
+					details = this.propertyDetails[i1];
+					this.setProperty(details,details.start + details.change * easing);
+				}
+			} else {
+				if(!this._reverse) easing = this._ease.calculate(tweenPosition); else easing = this._ease.calculate(1 - tweenPosition);
+				var endValue;
+				var _g11 = 0;
+				var _g2 = this.detailsLength;
+				while(_g11 < _g2) {
+					var i2 = _g11++;
+					details = this.propertyDetails[i2];
+					if(this._smartRotation && (details.propertyName == "rotation" || details.propertyName == "rotationX" || details.propertyName == "rotationY" || details.propertyName == "rotationZ")) {
+						var rotation = details.change % 360;
+						if(rotation > 180) rotation -= 360; else if(rotation < -180) rotation += 360;
+						endValue = details.start + rotation * easing;
+					} else endValue = details.start + details.change * easing;
+					if(!this._snapping) {
+						if(details.isField) details.target[details.propertyName] = endValue; else Reflect.setProperty(details.target,details.propertyName,endValue);
+					} else this.setProperty(details,Math.round(endValue));
+				}
+			}
+			if(tweenPosition == 1) {
+				if(this._repeat == 0) {
+					this.active = false;
+					if(this.toggleVisible && this.getField(this.target,"alpha") == 0) this.setField_motion_actuators_SimpleActuator_T(this.target,"visible",false);
+					this.complete(true);
+					return;
+				} else {
+					if(this._onRepeat != null) this.callMethod(this._onRepeat,this._onRepeatParams);
+					if(this._reflect) this._reverse = !this._reverse;
+					this.startTime = currentTime;
+					this.timeOffset = this.startTime + this._delay;
+					if(this._repeat > 0) this._repeat--;
+				}
+			}
+			if(this.sendChange) this.change();
+		}
+	}
+	,__class__: motion_actuators_SimpleActuator
+});
+var motion_easing_Expo = function() { };
+$hxClasses["motion.easing.Expo"] = motion_easing_Expo;
+motion_easing_Expo.__name__ = ["motion","easing","Expo"];
+motion_easing_Expo.__properties__ = {get_easeOut:"get_easeOut",get_easeInOut:"get_easeInOut",get_easeIn:"get_easeIn"}
+motion_easing_Expo.get_easeIn = function() {
+	return new motion_easing_ExpoEaseIn();
+};
+motion_easing_Expo.get_easeInOut = function() {
+	return new motion_easing_ExpoEaseInOut();
+};
+motion_easing_Expo.get_easeOut = function() {
+	return new motion_easing_ExpoEaseOut();
+};
+var motion_easing_IEasing = function() { };
+$hxClasses["motion.easing.IEasing"] = motion_easing_IEasing;
+motion_easing_IEasing.__name__ = ["motion","easing","IEasing"];
+motion_easing_IEasing.prototype = {
+	calculate: null
+	,ease: null
+	,__class__: motion_easing_IEasing
+};
+var motion_easing_ExpoEaseOut = function() {
+};
+$hxClasses["motion.easing.ExpoEaseOut"] = motion_easing_ExpoEaseOut;
+motion_easing_ExpoEaseOut.__name__ = ["motion","easing","ExpoEaseOut"];
+motion_easing_ExpoEaseOut.__interfaces__ = [motion_easing_IEasing];
+motion_easing_ExpoEaseOut.prototype = {
+	calculate: function(k) {
+		if(k == 1) return 1; else return 1 - Math.pow(2,-10 * k);
+	}
+	,ease: function(t,b,c,d) {
+		if(t == d) return b + c; else return c * (1 - Math.pow(2,-10 * t / d)) + b;
+	}
+	,__class__: motion_easing_ExpoEaseOut
+};
+var motion_Actuate = function() { };
+$hxClasses["motion.Actuate"] = motion_Actuate;
+motion_Actuate.__name__ = ["motion","Actuate"];
+motion_Actuate.apply = function(target,properties,customActuator) {
+	motion_Actuate.stop(target,properties);
+	if(customActuator == null) customActuator = motion_Actuate.defaultActuator;
+	var actuator = Type.createInstance(customActuator,[target,0,properties]);
+	actuator.apply();
+	return actuator;
+};
+motion_Actuate.effects = function(target,duration,overwrite) {
+	if(overwrite == null) overwrite = true;
+	return new motion__$Actuate_EffectsOptions(target,duration,overwrite);
+};
+motion_Actuate.getLibrary = function(target,allowCreation) {
+	if(allowCreation == null) allowCreation = true;
+	if(!(motion_Actuate.targetLibraries.h.__keys__[target.__id__] != null) && allowCreation) motion_Actuate.targetLibraries.set(target,[]);
+	return motion_Actuate.targetLibraries.h[target.__id__];
+};
+motion_Actuate.isActive = function() {
+	var result = false;
+	var $it0 = motion_Actuate.targetLibraries.iterator();
+	while( $it0.hasNext() ) {
+		var library = $it0.next();
+		result = true;
+		break;
+	}
+	return result;
+};
+motion_Actuate.motionPath = function(target,duration,properties,overwrite) {
+	if(overwrite == null) overwrite = true;
+	return motion_Actuate.tween(target,duration,properties,overwrite,motion_actuators_MotionPathActuator);
+};
+motion_Actuate.pause = function(target) {
+	if(js_Boot.__instanceof(target,motion_actuators_IGenericActuator)) {
+		var actuator = target;
+		actuator.pause();
+	} else {
+		var library = motion_Actuate.getLibrary(target,false);
+		if(library != null) {
+			var _g = 0;
+			while(_g < library.length) {
+				var actuator1 = library[_g];
+				++_g;
+				actuator1.pause();
+			}
+		}
+	}
+};
+motion_Actuate.pauseAll = function() {
+	var $it0 = motion_Actuate.targetLibraries.iterator();
+	while( $it0.hasNext() ) {
+		var library = $it0.next();
+		var _g = 0;
+		while(_g < library.length) {
+			var actuator = library[_g];
+			++_g;
+			actuator.pause();
+		}
+	}
+};
+motion_Actuate.reset = function() {
+	var $it0 = motion_Actuate.targetLibraries.iterator();
+	while( $it0.hasNext() ) {
+		var library = $it0.next();
+		var i = library.length - 1;
+		while(i >= 0) {
+			library[i].stop(null,false,false);
+			i--;
+		}
+	}
+	motion_Actuate.targetLibraries = new haxe_ds_ObjectMap();
+};
+motion_Actuate.resume = function(target) {
+	if(js_Boot.__instanceof(target,motion_actuators_IGenericActuator)) {
+		var actuator = target;
+		actuator.resume();
+	} else {
+		var library = motion_Actuate.getLibrary(target,false);
+		if(library != null) {
+			var _g = 0;
+			while(_g < library.length) {
+				var actuator1 = library[_g];
+				++_g;
+				actuator1.resume();
+			}
+		}
+	}
+};
+motion_Actuate.resumeAll = function() {
+	var $it0 = motion_Actuate.targetLibraries.iterator();
+	while( $it0.hasNext() ) {
+		var library = $it0.next();
+		var _g = 0;
+		while(_g < library.length) {
+			var actuator = library[_g];
+			++_g;
+			actuator.resume();
+		}
+	}
+};
+motion_Actuate.stop = function(target,properties,complete,sendEvent) {
+	if(sendEvent == null) sendEvent = true;
+	if(complete == null) complete = false;
+	if(target != null) {
+		if(js_Boot.__instanceof(target,motion_actuators_IGenericActuator)) {
+			var actuator = target;
+			actuator.stop(null,complete,sendEvent);
+		} else {
+			var library = motion_Actuate.getLibrary(target,false);
+			if(library != null) {
+				if(typeof(properties) == "string") {
+					var temp = { };
+					Reflect.setField(temp,properties,null);
+					properties = temp;
+				} else if((properties instanceof Array) && properties.__enum__ == null) {
+					var temp1 = { };
+					var _g = 0;
+					var _g1;
+					_g1 = js_Boot.__cast(properties , Array);
+					while(_g < _g1.length) {
+						var property = _g1[_g];
+						++_g;
+						Reflect.setField(temp1,property,null);
+					}
+					properties = temp1;
+				}
+				var i = library.length - 1;
+				while(i >= 0) {
+					library[i].stop(properties,complete,sendEvent);
+					i--;
+				}
+			}
+		}
+	}
+};
+motion_Actuate.timer = function(duration,customActuator) {
+	return motion_Actuate.tween(new motion__$Actuate_TweenTimer(0),duration,new motion__$Actuate_TweenTimer(1),false,customActuator);
+};
+motion_Actuate.transform = function(target,duration,overwrite) {
+	if(overwrite == null) overwrite = true;
+	if(duration == null) duration = 0;
+	return new motion__$Actuate_TransformOptions(target,duration,overwrite);
+};
+motion_Actuate.tween = function(target,duration,properties,overwrite,customActuator) {
+	if(overwrite == null) overwrite = true;
+	if(target != null) {
+		if(duration > 0) {
+			if(customActuator == null) customActuator = motion_Actuate.defaultActuator;
+			var actuator = Type.createInstance(customActuator,[target,duration,properties]);
+			var library = motion_Actuate.getLibrary(actuator.target);
+			if(overwrite) {
+				var i = library.length - 1;
+				while(i >= 0) {
+					library[i].stop(actuator.properties,false,false);
+					i--;
+				}
+				library = motion_Actuate.getLibrary(actuator.target);
+			}
+			library.push(actuator);
+			actuator.move();
+			return actuator;
+		} else return motion_Actuate.apply(target,properties,customActuator);
+	}
+	return null;
+};
+motion_Actuate.unload = function(actuator) {
+	var target = actuator.target;
+	if(motion_Actuate.targetLibraries.h.__keys__[target.__id__] != null) {
+		HxOverrides.remove(motion_Actuate.targetLibraries.h[target.__id__],actuator);
+		if(motion_Actuate.targetLibraries.h[target.__id__].length == 0) motion_Actuate.targetLibraries.remove(target);
+	}
+};
+motion_Actuate.update = function(target,duration,start,end,overwrite) {
+	if(overwrite == null) overwrite = true;
+	var properties = { start : start, end : end};
+	return motion_Actuate.tween(target,duration,properties,overwrite,motion_actuators_MethodActuator);
+};
+var motion__$Actuate_EffectsOptions = function(target,duration,overwrite) {
+	this.target = target;
+	this.duration = duration;
+	this.overwrite = overwrite;
+};
+$hxClasses["motion._Actuate.EffectsOptions"] = motion__$Actuate_EffectsOptions;
+motion__$Actuate_EffectsOptions.__name__ = ["motion","_Actuate","EffectsOptions"];
+motion__$Actuate_EffectsOptions.prototype = {
+	duration: null
+	,overwrite: null
+	,target: null
+	,filter: function(reference,properties) {
+		properties.filter = reference;
+		return motion_Actuate.tween(this.target,this.duration,properties,this.overwrite,motion_actuators_FilterActuator);
+	}
+	,__class__: motion__$Actuate_EffectsOptions
+};
+var motion__$Actuate_TransformOptions = function(target,duration,overwrite) {
+	this.target = target;
+	this.duration = duration;
+	this.overwrite = overwrite;
+};
+$hxClasses["motion._Actuate.TransformOptions"] = motion__$Actuate_TransformOptions;
+motion__$Actuate_TransformOptions.__name__ = ["motion","_Actuate","TransformOptions"];
+motion__$Actuate_TransformOptions.prototype = {
+	duration: null
+	,overwrite: null
+	,target: null
+	,color: function(value,strength,alpha) {
+		if(strength == null) strength = 1;
+		if(value == null) value = 0;
+		var properties = { colorValue : value, colorStrength : strength};
+		if(alpha != null) properties.colorAlpha = alpha;
+		return motion_Actuate.tween(this.target,this.duration,properties,this.overwrite,motion_actuators_TransformActuator);
+	}
+	,sound: function(volume,pan) {
+		var properties = { };
+		if(volume != null) properties.soundVolume = volume;
+		if(pan != null) properties.soundPan = pan;
+		return motion_Actuate.tween(this.target,this.duration,properties,this.overwrite,motion_actuators_TransformActuator);
+	}
+	,__class__: motion__$Actuate_TransformOptions
+};
+var motion__$Actuate_TweenTimer = function(progress) {
+	this.progress = progress;
+};
+$hxClasses["motion._Actuate.TweenTimer"] = motion__$Actuate_TweenTimer;
+motion__$Actuate_TweenTimer.__name__ = ["motion","_Actuate","TweenTimer"];
+motion__$Actuate_TweenTimer.prototype = {
+	progress: null
+	,__class__: motion__$Actuate_TweenTimer
+};
+var motion_MotionPath = function() {
+	this._x = new motion_ComponentPath();
+	this._y = new motion_ComponentPath();
+	this._rotation = null;
+};
+$hxClasses["motion.MotionPath"] = motion_MotionPath;
+motion_MotionPath.__name__ = ["motion","MotionPath"];
+motion_MotionPath.prototype = {
+	rotation: null
+	,x: null
+	,y: null
+	,_rotation: null
+	,_x: null
+	,_y: null
+	,bezier: function(x,y,controlX,controlY,strength) {
+		if(strength == null) strength = 1;
+		this._x.addPath(new motion_BezierPath(x,controlX,strength));
+		this._y.addPath(new motion_BezierPath(y,controlY,strength));
+		return this;
+	}
+	,line: function(x,y,strength) {
+		if(strength == null) strength = 1;
+		this._x.addPath(new motion_LinearPath(x,strength));
+		this._y.addPath(new motion_LinearPath(y,strength));
+		return this;
+	}
+	,get_rotation: function() {
+		if(this._rotation == null) this._rotation = new motion_RotationPath(this._x,this._y);
+		return this._rotation;
+	}
+	,get_x: function() {
+		return this._x;
+	}
+	,get_y: function() {
+		return this._y;
+	}
+	,__class__: motion_MotionPath
+	,__properties__: {get_y:"get_y",get_x:"get_x",get_rotation:"get_rotation"}
+};
+var motion_IComponentPath = function() { };
+$hxClasses["motion.IComponentPath"] = motion_IComponentPath;
+motion_IComponentPath.__name__ = ["motion","IComponentPath"];
+motion_IComponentPath.prototype = {
+	get_end: null
+	,end: null
+	,start: null
+	,calculate: null
+	,__class__: motion_IComponentPath
+	,__properties__: {get_end:"get_end"}
+};
+var motion_ComponentPath = function() {
+	this.paths = [];
+	this.start = 0;
+	this.totalStrength = 0;
+};
+$hxClasses["motion.ComponentPath"] = motion_ComponentPath;
+motion_ComponentPath.__name__ = ["motion","ComponentPath"];
+motion_ComponentPath.__interfaces__ = [motion_IComponentPath];
+motion_ComponentPath.prototype = {
+	start: null
+	,end: null
+	,paths: null
+	,totalStrength: null
+	,addPath: function(path) {
+		this.paths.push(path);
+		this.totalStrength += path.strength;
+	}
+	,calculate: function(k) {
+		if(this.paths.length == 1) return this.paths[0].calculate(this.start,k); else {
+			var ratio = k * this.totalStrength;
+			var lastEnd = this.start;
+			var _g = 0;
+			var _g1 = this.paths;
+			while(_g < _g1.length) {
+				var path = _g1[_g];
+				++_g;
+				if(ratio > path.strength) {
+					ratio -= path.strength;
+					lastEnd = path.end;
+				} else return path.calculate(lastEnd,ratio / path.strength);
+			}
+		}
+		return 0;
+	}
+	,get_end: function() {
+		if(this.paths.length > 0) {
+			var path = this.paths[this.paths.length - 1];
+			return path.end;
+		} else return this.start;
+	}
+	,__class__: motion_ComponentPath
+	,__properties__: {get_end:"get_end"}
+};
+var motion_BezierPath = function(end,control,strength) {
+	this.end = end;
+	this.control = control;
+	this.strength = strength;
+};
+$hxClasses["motion.BezierPath"] = motion_BezierPath;
+motion_BezierPath.__name__ = ["motion","BezierPath"];
+motion_BezierPath.prototype = {
+	control: null
+	,end: null
+	,strength: null
+	,calculate: function(start,k) {
+		return (1 - k) * (1 - k) * start + 2 * (1 - k) * k * this.control + k * k * this.end;
+	}
+	,__class__: motion_BezierPath
+};
+var motion_LinearPath = function(end,strength) {
+	motion_BezierPath.call(this,end,0,strength);
+};
+$hxClasses["motion.LinearPath"] = motion_LinearPath;
+motion_LinearPath.__name__ = ["motion","LinearPath"];
+motion_LinearPath.__super__ = motion_BezierPath;
+motion_LinearPath.prototype = $extend(motion_BezierPath.prototype,{
+	calculate: function(start,k) {
+		return start + k * (this.end - start);
+	}
+	,__class__: motion_LinearPath
+});
+var motion_RotationPath = function(x,y) {
+	this.step = 0.01;
+	this._x = x;
+	this._y = y;
+	this.offset = 0;
+	this.start = this.calculate(0.0);
+};
+$hxClasses["motion.RotationPath"] = motion_RotationPath;
+motion_RotationPath.__name__ = ["motion","RotationPath"];
+motion_RotationPath.__interfaces__ = [motion_IComponentPath];
+motion_RotationPath.prototype = {
+	end: null
+	,offset: null
+	,start: null
+	,step: null
+	,_x: null
+	,_y: null
+	,calculate: function(k) {
+		var dX = this._x.calculate(k) - this._x.calculate(k + this.step);
+		var dY = this._y.calculate(k) - this._y.calculate(k + this.step);
+		var angle = Math.atan2(dY,dX) * (180 / Math.PI);
+		angle = (angle + this.offset) % 360;
+		return angle;
+	}
+	,get_end: function() {
+		return this.calculate(1.0);
+	}
+	,__class__: motion_RotationPath
+	,__properties__: {get_end:"get_end"}
+};
+var motion_actuators_FilterActuator = function(target,duration,properties) {
+	this.filterIndex = -1;
+	motion_actuators_SimpleActuator.call(this,target,duration,properties);
+	if(js_Boot.__instanceof(properties.filter,Class)) {
+		this.filterClass = properties.filter;
+		if(target.get_filters().length == 0) target.set_filters([Type.createInstance(this.filterClass,[])]);
+		var _g = 0;
+		var _g1 = target.get_filters();
+		while(_g < _g1.length) {
+			var filter = _g1[_g];
+			++_g;
+			if(js_Boot.__instanceof(filter,this.filterClass)) this.filter = filter;
+		}
+	} else {
+		this.filterIndex = properties.filter;
+		this.filter = target.get_filters()[this.filterIndex];
+	}
+};
+$hxClasses["motion.actuators.FilterActuator"] = motion_actuators_FilterActuator;
+motion_actuators_FilterActuator.__name__ = ["motion","actuators","FilterActuator"];
+motion_actuators_FilterActuator.__super__ = motion_actuators_SimpleActuator;
+motion_actuators_FilterActuator.prototype = $extend(motion_actuators_SimpleActuator.prototype,{
+	filter: null
+	,filterClass: null
+	,filterIndex: null
+	,apply: function() {
+		var _g = 0;
+		var _g1 = Reflect.fields(this.properties);
+		while(_g < _g1.length) {
+			var propertyName = _g1[_g];
+			++_g;
+			if(propertyName != "filter") Reflect.setField(this.filter,propertyName,Reflect.field(this.properties,propertyName));
+		}
+		var filters = this.getField(this.target,"filters");
+		Reflect.setField(filters,this.properties.filter,this.filter);
+		this.setField_openfl_display_DisplayObject(this.target,"filters",filters);
+	}
+	,initialize: function() {
+		var details;
+		var start;
+		var _g = 0;
+		var _g1 = Reflect.fields(this.properties);
+		while(_g < _g1.length) {
+			var propertyName = _g1[_g];
+			++_g;
+			if(propertyName != "filter") {
+				start = this.getField(this.filter,propertyName);
+				details = new motion_actuators_PropertyDetails(this.filter,propertyName,start,Reflect.field(this.properties,propertyName) - start);
+				this.propertyDetails.push(details);
+			}
+		}
+		this.detailsLength = this.propertyDetails.length;
+		this.initialized = true;
+	}
+	,update: function(currentTime) {
+		motion_actuators_SimpleActuator.prototype.update.call(this,currentTime);
+		var filters = this.target.get_filters();
+		if(this.filterIndex > -1) Reflect.setField(filters,this.properties.filter,this.filter); else {
+			var _g1 = 0;
+			var _g = filters.length;
+			while(_g1 < _g) {
+				var i = _g1++;
+				if(js_Boot.__instanceof(filters[i],this.filterClass)) filters[i] = this.filter;
+			}
+		}
+		this.setField_openfl_display_DisplayObject(this.target,"filters",filters);
+	}
+	,__class__: motion_actuators_FilterActuator
+});
+var motion_actuators_MethodActuator = function(target,duration,properties) {
+	this.currentParameters = [];
+	this.tweenProperties = { };
+	motion_actuators_SimpleActuator.call(this,target,duration,properties);
+	if(!Object.prototype.hasOwnProperty.call(properties,"start")) this.properties.start = [];
+	if(!Object.prototype.hasOwnProperty.call(properties,"end")) this.properties.end = this.properties.start;
+	var _g1 = 0;
+	var _g = this.properties.start.length;
+	while(_g1 < _g) {
+		var i = _g1++;
+		this.currentParameters.push(this.properties.start[i]);
+	}
+};
+$hxClasses["motion.actuators.MethodActuator"] = motion_actuators_MethodActuator;
+motion_actuators_MethodActuator.__name__ = ["motion","actuators","MethodActuator"];
+motion_actuators_MethodActuator.__super__ = motion_actuators_SimpleActuator;
+motion_actuators_MethodActuator.prototype = $extend(motion_actuators_SimpleActuator.prototype,{
+	currentParameters: null
+	,tweenProperties: null
+	,apply: function() {
+		this.callMethod(this.target,this.properties.end);
+	}
+	,complete: function(sendEvent) {
+		if(sendEvent == null) sendEvent = true;
+		var _g1 = 0;
+		var _g = this.properties.start.length;
+		while(_g1 < _g) {
+			var i = _g1++;
+			this.currentParameters[i] = Reflect.field(this.tweenProperties,"param" + i);
+		}
+		this.callMethod(this.target,this.currentParameters);
+		motion_actuators_SimpleActuator.prototype.complete.call(this,sendEvent);
+	}
+	,initialize: function() {
+		var details;
+		var propertyName;
+		var start;
+		var _g1 = 0;
+		var _g = this.properties.start.length;
+		while(_g1 < _g) {
+			var i = _g1++;
+			propertyName = "param" + i;
+			start = this.properties.start[i];
+			this.tweenProperties[propertyName] = start;
+			if(typeof(start) == "number" || ((start | 0) === start)) {
+				details = new motion_actuators_PropertyDetails(this.tweenProperties,propertyName,start,this.properties.end[i] - start);
+				this.propertyDetails.push(details);
+			}
+		}
+		this.detailsLength = this.propertyDetails.length;
+		this.initialized = true;
+	}
+	,update: function(currentTime) {
+		motion_actuators_SimpleActuator.prototype.update.call(this,currentTime);
+		if(this.active && !this.paused) {
+			var _g1 = 0;
+			var _g = this.properties.start.length;
+			while(_g1 < _g) {
+				var i = _g1++;
+				this.currentParameters[i] = Reflect.field(this.tweenProperties,"param" + i);
+			}
+			this.callMethod(this.target,this.currentParameters);
+		}
+	}
+	,__class__: motion_actuators_MethodActuator
+});
+var motion_actuators_MotionPathActuator = function(target,duration,properties) {
+	motion_actuators_SimpleActuator.call(this,target,duration,properties);
+};
+$hxClasses["motion.actuators.MotionPathActuator"] = motion_actuators_MotionPathActuator;
+motion_actuators_MotionPathActuator.__name__ = ["motion","actuators","MotionPathActuator"];
+motion_actuators_MotionPathActuator.__super__ = motion_actuators_SimpleActuator;
+motion_actuators_MotionPathActuator.prototype = $extend(motion_actuators_SimpleActuator.prototype,{
+	apply: function() {
+		var _g = 0;
+		var _g1 = Reflect.fields(this.properties);
+		while(_g < _g1.length) {
+			var propertyName = _g1[_g];
+			++_g;
+			if(Object.prototype.hasOwnProperty.call(this.target,propertyName)) Reflect.setField(this.target,propertyName,(js_Boot.__cast(Reflect.field(this.properties,propertyName) , motion_IComponentPath)).get_end()); else Reflect.setProperty(this.target,propertyName,(js_Boot.__cast(Reflect.field(this.properties,propertyName) , motion_IComponentPath)).get_end());
+		}
+	}
+	,initialize: function() {
+		var details;
+		var path;
+		var _g = 0;
+		var _g1 = Reflect.fields(this.properties);
+		while(_g < _g1.length) {
+			var propertyName = _g1[_g];
+			++_g;
+			path = js_Boot.__cast(Reflect.field(this.properties,propertyName) , motion_IComponentPath);
+			if(path != null) {
+				var isField = true;
+				if(Object.prototype.hasOwnProperty.call(this.target,propertyName)) path.start = Reflect.field(this.target,propertyName); else {
+					isField = false;
+					path.start = Reflect.getProperty(this.target,propertyName);
+				}
+				details = new motion_actuators_PropertyPathDetails(this.target,propertyName,path,isField);
+				this.propertyDetails.push(details);
+			}
+		}
+		this.detailsLength = this.propertyDetails.length;
+		this.initialized = true;
+	}
+	,update: function(currentTime) {
+		if(!this.paused) {
+			var details;
+			var easing;
+			var tweenPosition = (currentTime - this.timeOffset) / this.duration;
+			if(tweenPosition > 1) tweenPosition = 1;
+			if(!this.initialized) this.initialize();
+			if(!this.special) {
+				easing = this._ease.calculate(tweenPosition);
+				var _g = 0;
+				var _g1 = this.propertyDetails;
+				while(_g < _g1.length) {
+					var details1 = _g1[_g];
+					++_g;
+					if(details1.isField) Reflect.setField(details1.target,details1.propertyName,(js_Boot.__cast(details1 , motion_actuators_PropertyPathDetails)).path.calculate(easing)); else Reflect.setProperty(details1.target,details1.propertyName,(js_Boot.__cast(details1 , motion_actuators_PropertyPathDetails)).path.calculate(easing));
+				}
+			} else {
+				if(!this._reverse) easing = this._ease.calculate(tweenPosition); else easing = this._ease.calculate(1 - tweenPosition);
+				var endValue;
+				var _g2 = 0;
+				var _g11 = this.propertyDetails;
+				while(_g2 < _g11.length) {
+					var details2 = _g11[_g2];
+					++_g2;
+					if(!this._snapping) {
+						if(details2.isField) Reflect.setField(details2.target,details2.propertyName,(js_Boot.__cast(details2 , motion_actuators_PropertyPathDetails)).path.calculate(easing)); else Reflect.setProperty(details2.target,details2.propertyName,(js_Boot.__cast(details2 , motion_actuators_PropertyPathDetails)).path.calculate(easing));
+					} else if(details2.isField) Reflect.setField(details2.target,details2.propertyName,Math.round((js_Boot.__cast(details2 , motion_actuators_PropertyPathDetails)).path.calculate(easing))); else Reflect.setProperty(details2.target,details2.propertyName,Math.round((js_Boot.__cast(details2 , motion_actuators_PropertyPathDetails)).path.calculate(easing)));
+				}
+			}
+			if(tweenPosition == 1) {
+				if(this._repeat == 0) {
+					this.active = false;
+					if(this.toggleVisible && this.getField(this.target,"alpha") == 0) this.setField_motion_actuators_MotionPathActuator_T(this.target,"visible",false);
+					this.complete(true);
+					return;
+				} else {
+					if(this._onRepeat != null) this.callMethod(this._onRepeat,this._onRepeatParams);
+					if(this._reflect) this._reverse = !this._reverse;
+					this.startTime = currentTime;
+					this.timeOffset = this.startTime + this._delay;
+					if(this._repeat > 0) this._repeat--;
+				}
+			}
+			if(this.sendChange) this.change();
+		}
+	}
+	,__class__: motion_actuators_MotionPathActuator
+});
+var motion_actuators_PropertyDetails = function(target,propertyName,start,change,isField) {
+	if(isField == null) isField = true;
+	this.target = target;
+	this.propertyName = propertyName;
+	this.start = start;
+	this.change = change;
+	this.isField = isField;
+};
+$hxClasses["motion.actuators.PropertyDetails"] = motion_actuators_PropertyDetails;
+motion_actuators_PropertyDetails.__name__ = ["motion","actuators","PropertyDetails"];
+motion_actuators_PropertyDetails.prototype = {
+	change: null
+	,isField: null
+	,propertyName: null
+	,start: null
+	,target: null
+	,__class__: motion_actuators_PropertyDetails
+};
+var motion_actuators_PropertyPathDetails = function(target,propertyName,path,isField) {
+	if(isField == null) isField = true;
+	motion_actuators_PropertyDetails.call(this,target,propertyName,0,0,isField);
+	this.path = path;
+};
+$hxClasses["motion.actuators.PropertyPathDetails"] = motion_actuators_PropertyPathDetails;
+motion_actuators_PropertyPathDetails.__name__ = ["motion","actuators","PropertyPathDetails"];
+motion_actuators_PropertyPathDetails.__super__ = motion_actuators_PropertyDetails;
+motion_actuators_PropertyPathDetails.prototype = $extend(motion_actuators_PropertyDetails.prototype,{
+	path: null
+	,__class__: motion_actuators_PropertyPathDetails
+});
+var motion_actuators_TransformActuator = function(target,duration,properties) {
+	motion_actuators_SimpleActuator.call(this,target,duration,properties);
+};
+$hxClasses["motion.actuators.TransformActuator"] = motion_actuators_TransformActuator;
+motion_actuators_TransformActuator.__name__ = ["motion","actuators","TransformActuator"];
+motion_actuators_TransformActuator.__super__ = motion_actuators_SimpleActuator;
+motion_actuators_TransformActuator.prototype = $extend(motion_actuators_SimpleActuator.prototype,{
+	endColorTransform: null
+	,endSoundTransform: null
+	,tweenColorTransform: null
+	,tweenSoundTransform: null
+	,apply: function() {
+		this.initialize();
+		if(this.endColorTransform != null) {
+			var transform = this.getField(this.target,"transform");
+			this.setField_openfl_geom_Transform(transform,"colorTransform",this.endColorTransform);
+		}
+		if(this.endSoundTransform != null) this.setField_motion_actuators_TransformActuator_T(this.target,"soundTransform",this.endSoundTransform);
+	}
+	,initialize: function() {
+		if(Object.prototype.hasOwnProperty.call(this.properties,"colorValue") && js_Boot.__instanceof(this.target,openfl_display_DisplayObject)) this.initializeColor();
+		if(Object.prototype.hasOwnProperty.call(this.properties,"soundVolume") || Object.prototype.hasOwnProperty.call(this.properties,"soundPan")) this.initializeSound();
+		this.detailsLength = this.propertyDetails.length;
+		this.initialized = true;
+	}
+	,initializeColor: function() {
+		this.endColorTransform = new openfl_geom_ColorTransform();
+		var color = this.properties.colorValue;
+		var strength = this.properties.colorStrength;
+		if(strength < 1) {
+			var multiplier;
+			var offset;
+			if(strength < 0.5) {
+				multiplier = 1;
+				offset = strength * 2;
+			} else {
+				multiplier = 1 - (strength - 0.5) * 2;
+				offset = 1;
+			}
+			this.endColorTransform.redMultiplier = multiplier;
+			this.endColorTransform.greenMultiplier = multiplier;
+			this.endColorTransform.blueMultiplier = multiplier;
+			this.endColorTransform.redOffset = offset * (color >> 16 & 255);
+			this.endColorTransform.greenOffset = offset * (color >> 8 & 255);
+			this.endColorTransform.blueOffset = offset * (color & 255);
+		} else {
+			this.endColorTransform.redMultiplier = 0;
+			this.endColorTransform.greenMultiplier = 0;
+			this.endColorTransform.blueMultiplier = 0;
+			this.endColorTransform.redOffset = color >> 16 & 255;
+			this.endColorTransform.greenOffset = color >> 8 & 255;
+			this.endColorTransform.blueOffset = color & 255;
+		}
+		var propertyNames = ["redMultiplier","greenMultiplier","blueMultiplier","redOffset","greenOffset","blueOffset"];
+		if(Object.prototype.hasOwnProperty.call(this.properties,"colorAlpha")) {
+			this.endColorTransform.alphaMultiplier = this.properties.colorAlpha;
+			propertyNames.push("alphaMultiplier");
+		} else this.endColorTransform.alphaMultiplier = this.getField(this.target,"alpha");
+		var transform = this.getField(this.target,"transform");
+		var begin = this.getField(transform,"colorTransform");
+		this.tweenColorTransform = new openfl_geom_ColorTransform();
+		var details;
+		var start;
+		var _g = 0;
+		while(_g < propertyNames.length) {
+			var propertyName = propertyNames[_g];
+			++_g;
+			start = this.getField(begin,propertyName);
+			details = new motion_actuators_PropertyDetails(this.tweenColorTransform,propertyName,start,this.getField(this.endColorTransform,propertyName) - start);
+			this.propertyDetails.push(details);
+		}
+	}
+	,initializeSound: function() {
+		if(this.getField(this.target,"soundTransform") == null) this.setField_motion_actuators_TransformActuator_T(this.target,"soundTransform",new openfl_media_SoundTransform());
+		var start = this.getField(this.target,"soundTransform");
+		this.endSoundTransform = this.getField(this.target,"soundTransform");
+		this.tweenSoundTransform = new openfl_media_SoundTransform();
+		if(Object.prototype.hasOwnProperty.call(this.properties,"soundVolume")) {
+			this.endSoundTransform.volume = this.properties.soundVolume;
+			this.propertyDetails.push(new motion_actuators_PropertyDetails(this.tweenSoundTransform,"volume",start.volume,this.endSoundTransform.volume - start.volume));
+		}
+		if(Object.prototype.hasOwnProperty.call(this.properties,"soundPan")) {
+			this.endSoundTransform.pan = this.properties.soundPan;
+			this.propertyDetails.push(new motion_actuators_PropertyDetails(this.tweenSoundTransform,"pan",start.pan,this.endSoundTransform.pan - start.pan));
+		}
+	}
+	,update: function(currentTime) {
+		motion_actuators_SimpleActuator.prototype.update.call(this,currentTime);
+		if(this.endColorTransform != null) {
+			var transform = this.getField(this.target,"transform");
+			this.setField_openfl_geom_Transform(transform,"colorTransform",this.tweenColorTransform);
+		}
+		if(this.endSoundTransform != null) this.setField_motion_actuators_TransformActuator_T(this.target,"soundTransform",this.tweenSoundTransform);
+	}
+	,__class__: motion_actuators_TransformActuator
+});
+var motion_easing_ExpoEaseIn = function() {
+};
+$hxClasses["motion.easing.ExpoEaseIn"] = motion_easing_ExpoEaseIn;
+motion_easing_ExpoEaseIn.__name__ = ["motion","easing","ExpoEaseIn"];
+motion_easing_ExpoEaseIn.__interfaces__ = [motion_easing_IEasing];
+motion_easing_ExpoEaseIn.prototype = {
+	calculate: function(k) {
+		if(k == 0) return 0; else return Math.pow(2,10 * (k - 1));
+	}
+	,ease: function(t,b,c,d) {
+		if(t == 0) return b; else return c * Math.pow(2,10 * (t / d - 1)) + b;
+	}
+	,__class__: motion_easing_ExpoEaseIn
+};
+var motion_easing_ExpoEaseInOut = function() {
+};
+$hxClasses["motion.easing.ExpoEaseInOut"] = motion_easing_ExpoEaseInOut;
+motion_easing_ExpoEaseInOut.__name__ = ["motion","easing","ExpoEaseInOut"];
+motion_easing_ExpoEaseInOut.__interfaces__ = [motion_easing_IEasing];
+motion_easing_ExpoEaseInOut.prototype = {
+	calculate: function(k) {
+		if(k == 0) return 0;
+		if(k == 1) return 1;
+		if((k /= 0.5) < 1.0) return 0.5 * Math.pow(2,10 * (k - 1));
+		return 0.5 * (2 - Math.pow(2,-10 * --k));
+	}
+	,ease: function(t,b,c,d) {
+		if(t == 0) return b;
+		if(t == d) return b + c;
+		if((t /= d / 2.0) < 1.0) return c / 2 * Math.pow(2,10 * (t - 1)) + b;
+		return c / 2 * (2 - Math.pow(2,-10 * --t)) + b;
+	}
+	,__class__: motion_easing_ExpoEaseInOut
+};
+var motion_easing_Linear = function() { };
+$hxClasses["motion.easing.Linear"] = motion_easing_Linear;
+motion_easing_Linear.__name__ = ["motion","easing","Linear"];
+motion_easing_Linear.__properties__ = {get_easeNone:"get_easeNone"}
+motion_easing_Linear.get_easeNone = function() {
+	return new motion_easing_LinearEaseNone();
+};
+var motion_easing_LinearEaseNone = function() {
+};
+$hxClasses["motion.easing.LinearEaseNone"] = motion_easing_LinearEaseNone;
+motion_easing_LinearEaseNone.__name__ = ["motion","easing","LinearEaseNone"];
+motion_easing_LinearEaseNone.__interfaces__ = [motion_easing_IEasing];
+motion_easing_LinearEaseNone.prototype = {
+	calculate: function(k) {
+		return k;
+	}
+	,ease: function(t,b,c,d) {
+		return c * t / d + b;
+	}
+	,__class__: motion_easing_LinearEaseNone
+};
+var msignal_Signal = function(valueClasses) {
+	if(valueClasses == null) valueClasses = [];
+	this.valueClasses = valueClasses;
+	this.slots = msignal_SlotList.NIL;
+	this.priorityBased = false;
+};
+$hxClasses["msignal.Signal"] = msignal_Signal;
+msignal_Signal.__name__ = ["msignal","Signal"];
+msignal_Signal.prototype = {
+	valueClasses: null
+	,numListeners: null
+	,slots: null
+	,priorityBased: null
+	,add: function(listener) {
+		return this.registerListener(listener);
+	}
+	,addOnce: function(listener) {
+		return this.registerListener(listener,true);
+	}
+	,addWithPriority: function(listener,priority) {
+		if(priority == null) priority = 0;
+		return this.registerListener(listener,false,priority);
+	}
+	,addOnceWithPriority: function(listener,priority) {
+		if(priority == null) priority = 0;
+		return this.registerListener(listener,true,priority);
+	}
+	,remove: function(listener) {
+		var slot = this.slots.find(listener);
+		if(slot == null) return null;
+		this.slots = this.slots.filterNot(listener);
+		return slot;
+	}
+	,removeAll: function() {
+		this.slots = msignal_SlotList.NIL;
+	}
+	,registerListener: function(listener,once,priority) {
+		if(priority == null) priority = 0;
+		if(once == null) once = false;
+		if(this.registrationPossible(listener,once)) {
+			var newSlot = this.createSlot(listener,once,priority);
+			if(!this.priorityBased && priority != 0) this.priorityBased = true;
+			if(!this.priorityBased && priority == 0) this.slots = this.slots.prepend(newSlot); else this.slots = this.slots.insertWithPriority(newSlot);
+			return newSlot;
+		}
+		return this.slots.find(listener);
+	}
+	,registrationPossible: function(listener,once) {
+		if(!this.slots.nonEmpty) return true;
+		var existingSlot = this.slots.find(listener);
+		if(existingSlot == null) return true;
+		if(existingSlot.once != once) throw new js__$Boot_HaxeError("You cannot addOnce() then add() the same listener without removing the relationship first.");
+		return false;
+	}
+	,createSlot: function(listener,once,priority) {
+		if(priority == null) priority = 0;
+		if(once == null) once = false;
+		return null;
+	}
+	,get_numListeners: function() {
+		return this.slots.get_length();
+	}
+	,__class__: msignal_Signal
+	,__properties__: {get_numListeners:"get_numListeners"}
+};
+var msignal_Signal0 = function() {
+	msignal_Signal.call(this);
+};
+$hxClasses["msignal.Signal0"] = msignal_Signal0;
+msignal_Signal0.__name__ = ["msignal","Signal0"];
+msignal_Signal0.__super__ = msignal_Signal;
+msignal_Signal0.prototype = $extend(msignal_Signal.prototype,{
+	dispatch: function() {
+		var slotsToProcess = this.slots;
+		while(slotsToProcess.nonEmpty) {
+			slotsToProcess.head.execute();
+			slotsToProcess = slotsToProcess.tail;
+		}
+	}
+	,createSlot: function(listener,once,priority) {
+		if(priority == null) priority = 0;
+		if(once == null) once = false;
+		return new msignal_Slot0(this,listener,once,priority);
+	}
+	,__class__: msignal_Signal0
+});
+var msignal_Signal1 = function(type) {
+	msignal_Signal.call(this,[type]);
+};
+$hxClasses["msignal.Signal1"] = msignal_Signal1;
+msignal_Signal1.__name__ = ["msignal","Signal1"];
+msignal_Signal1.__super__ = msignal_Signal;
+msignal_Signal1.prototype = $extend(msignal_Signal.prototype,{
+	dispatch: function(value) {
+		var slotsToProcess = this.slots;
+		while(slotsToProcess.nonEmpty) {
+			slotsToProcess.head.execute(value);
+			slotsToProcess = slotsToProcess.tail;
+		}
+	}
+	,createSlot: function(listener,once,priority) {
+		if(priority == null) priority = 0;
+		if(once == null) once = false;
+		return new msignal_Slot1(this,listener,once,priority);
+	}
+	,__class__: msignal_Signal1
+});
+var msignal_Signal2 = function(type1,type2) {
+	msignal_Signal.call(this,[type1,type2]);
+};
+$hxClasses["msignal.Signal2"] = msignal_Signal2;
+msignal_Signal2.__name__ = ["msignal","Signal2"];
+msignal_Signal2.__super__ = msignal_Signal;
+msignal_Signal2.prototype = $extend(msignal_Signal.prototype,{
+	dispatch: function(value1,value2) {
+		var slotsToProcess = this.slots;
+		while(slotsToProcess.nonEmpty) {
+			slotsToProcess.head.execute(value1,value2);
+			slotsToProcess = slotsToProcess.tail;
+		}
+	}
+	,createSlot: function(listener,once,priority) {
+		if(priority == null) priority = 0;
+		if(once == null) once = false;
+		return new msignal_Slot2(this,listener,once,priority);
+	}
+	,__class__: msignal_Signal2
+});
+var msignal_Slot = function(signal,listener,once,priority) {
+	if(priority == null) priority = 0;
+	if(once == null) once = false;
+	this.signal = signal;
+	this.set_listener(listener);
+	this.once = once;
+	this.priority = priority;
+	this.enabled = true;
+};
+$hxClasses["msignal.Slot"] = msignal_Slot;
+msignal_Slot.__name__ = ["msignal","Slot"];
+msignal_Slot.prototype = {
+	listener: null
+	,once: null
+	,priority: null
+	,enabled: null
+	,signal: null
+	,remove: function() {
+		this.signal.remove(this.listener);
+	}
+	,set_listener: function(value) {
+		if(value == null) throw new js__$Boot_HaxeError("listener cannot be null");
+		return this.listener = value;
+	}
+	,__class__: msignal_Slot
+	,__properties__: {set_listener:"set_listener"}
+};
+var msignal_Slot0 = function(signal,listener,once,priority) {
+	if(priority == null) priority = 0;
+	if(once == null) once = false;
+	msignal_Slot.call(this,signal,listener,once,priority);
+};
+$hxClasses["msignal.Slot0"] = msignal_Slot0;
+msignal_Slot0.__name__ = ["msignal","Slot0"];
+msignal_Slot0.__super__ = msignal_Slot;
+msignal_Slot0.prototype = $extend(msignal_Slot.prototype,{
+	execute: function() {
+		if(!this.enabled) return;
+		if(this.once) this.remove();
+		this.listener();
+	}
+	,__class__: msignal_Slot0
+});
+var msignal_Slot1 = function(signal,listener,once,priority) {
+	if(priority == null) priority = 0;
+	if(once == null) once = false;
+	msignal_Slot.call(this,signal,listener,once,priority);
+};
+$hxClasses["msignal.Slot1"] = msignal_Slot1;
+msignal_Slot1.__name__ = ["msignal","Slot1"];
+msignal_Slot1.__super__ = msignal_Slot;
+msignal_Slot1.prototype = $extend(msignal_Slot.prototype,{
+	param: null
+	,execute: function(value1) {
+		if(!this.enabled) return;
+		if(this.once) this.remove();
+		if(this.param != null) value1 = this.param;
+		this.listener(value1);
+	}
+	,__class__: msignal_Slot1
+});
+var msignal_Slot2 = function(signal,listener,once,priority) {
+	if(priority == null) priority = 0;
+	if(once == null) once = false;
+	msignal_Slot.call(this,signal,listener,once,priority);
+};
+$hxClasses["msignal.Slot2"] = msignal_Slot2;
+msignal_Slot2.__name__ = ["msignal","Slot2"];
+msignal_Slot2.__super__ = msignal_Slot;
+msignal_Slot2.prototype = $extend(msignal_Slot.prototype,{
+	param1: null
+	,param2: null
+	,execute: function(value1,value2) {
+		if(!this.enabled) return;
+		if(this.once) this.remove();
+		if(this.param1 != null) value1 = this.param1;
+		if(this.param2 != null) value2 = this.param2;
+		this.listener(value1,value2);
+	}
+	,__class__: msignal_Slot2
+});
+var msignal_SlotList = function(head,tail) {
+	this.nonEmpty = false;
+	if(head == null && tail == null) {
+		if(msignal_SlotList.NIL != null) throw new js__$Boot_HaxeError("Parameters head and tail are null. Use the NIL element instead.");
+		this.nonEmpty = false;
+	} else if(head == null) throw new js__$Boot_HaxeError("Parameter head cannot be null."); else {
+		this.head = head;
+		if(tail == null) this.tail = msignal_SlotList.NIL; else this.tail = tail;
+		this.nonEmpty = true;
+	}
+};
+$hxClasses["msignal.SlotList"] = msignal_SlotList;
+msignal_SlotList.__name__ = ["msignal","SlotList"];
+msignal_SlotList.NIL = null;
+msignal_SlotList.prototype = {
+	head: null
+	,tail: null
+	,nonEmpty: null
+	,length: null
+	,get_length: function() {
+		if(!this.nonEmpty) return 0;
+		if(this.tail == msignal_SlotList.NIL) return 1;
+		var result = 0;
+		var p = this;
+		while(p.nonEmpty) {
+			++result;
+			p = p.tail;
+		}
+		return result;
+	}
+	,prepend: function(slot) {
+		return new msignal_SlotList(slot,this);
+	}
+	,append: function(slot) {
+		if(slot == null) return this;
+		if(!this.nonEmpty) return new msignal_SlotList(slot);
+		if(this.tail == msignal_SlotList.NIL) return new msignal_SlotList(slot).prepend(this.head);
+		var wholeClone = new msignal_SlotList(this.head);
+		var subClone = wholeClone;
+		var current = this.tail;
+		while(current.nonEmpty) {
+			subClone = subClone.tail = new msignal_SlotList(current.head);
+			current = current.tail;
+		}
+		subClone.tail = new msignal_SlotList(slot);
+		return wholeClone;
+	}
+	,insertWithPriority: function(slot) {
+		if(!this.nonEmpty) return new msignal_SlotList(slot);
+		var priority = slot.priority;
+		if(priority >= this.head.priority) return this.prepend(slot);
+		var wholeClone = new msignal_SlotList(this.head);
+		var subClone = wholeClone;
+		var current = this.tail;
+		while(current.nonEmpty) {
+			if(priority > current.head.priority) {
+				subClone.tail = current.prepend(slot);
+				return wholeClone;
+			}
+			subClone = subClone.tail = new msignal_SlotList(current.head);
+			current = current.tail;
+		}
+		subClone.tail = new msignal_SlotList(slot);
+		return wholeClone;
+	}
+	,filterNot: function(listener) {
+		if(!this.nonEmpty || listener == null) return this;
+		if(Reflect.compareMethods(this.head.listener,listener)) return this.tail;
+		var wholeClone = new msignal_SlotList(this.head);
+		var subClone = wholeClone;
+		var current = this.tail;
+		while(current.nonEmpty) {
+			if(Reflect.compareMethods(current.head.listener,listener)) {
+				subClone.tail = current.tail;
+				return wholeClone;
+			}
+			subClone = subClone.tail = new msignal_SlotList(current.head);
+			current = current.tail;
+		}
+		return this;
+	}
+	,contains: function(listener) {
+		if(!this.nonEmpty) return false;
+		var p = this;
+		while(p.nonEmpty) {
+			if(Reflect.compareMethods(p.head.listener,listener)) return true;
+			p = p.tail;
+		}
+		return false;
+	}
+	,find: function(listener) {
+		if(!this.nonEmpty) return null;
+		var p = this;
+		while(p.nonEmpty) {
+			if(Reflect.compareMethods(p.head.listener,listener)) return p.head;
+			p = p.tail;
+		}
+		return null;
+	}
+	,__class__: msignal_SlotList
+	,__properties__: {get_length:"get_length"}
 };
 var openfl_IAssetCache = function() { };
 $hxClasses["openfl.IAssetCache"] = openfl_IAssetCache;
@@ -46626,6 +48493,7 @@ while(_g11 < _g2) {
 	var i2 = _g11++;
 	lime_math_color__$RGBA_RGBA_$Impl_$.__clamp[i2] = 255;
 }
+msignal_SlotList.NIL = new msignal_SlotList(null,null);
 if(window.createjs != null) createjs.Sound.alternateExtensions = ["ogg","mp3","wav"];
 openfl_ui_Multitouch.maxTouchPoints = 2;
 openfl_ui_Multitouch.supportedGestures = null;
@@ -46646,7 +48514,17 @@ flixel_FlxObject.WALL = 17;
 flixel_FlxObject.ANY = 4369;
 flixel_FlxObject._firstSeparateFlxRect = flixel_util_FlxRect.get(null,null,null,null);
 flixel_FlxObject._secondSeparateFlxRect = flixel_util_FlxRect.get(null,null,null,null);
-Hero.ACCELERATION = 200;
+SteppingHero.LEG_WIDTH = 16;
+SteppingHero.LEG_HEIGHT = 48;
+SteppingHero.STEP_LENGTH = 128;
+SteppingHero.STEP_HALFLENGTH = 64.;
+SteppingHero.STEP_HEIGHT = 64.;
+SteppingHero.STEP_DURATION = 0.5;
+SteppingHero.BODY_WIDTH = 80.;
+SteppingHero.BODY_HALFWIDTH = 40.;
+SteppingHero.BODY_HEIGHT = 160.;
+SteppingHero.HEAD_WIDTH = 32;
+SteppingHero.HEAD_HEIGHT = 64;
 Xml.Element = 0;
 Xml.Document = 6;
 flixel_FlxCamera.STYLE_LOCKON = 0;
@@ -47571,6 +49449,12 @@ lime_utils__$Int32Array_Int32Array_$Impl_$.BYTES_PER_ELEMENT = 4;
 lime_utils__$UInt16Array_UInt16Array_$Impl_$.BYTES_PER_ELEMENT = 2;
 lime_utils__$UInt32Array_UInt32Array_$Impl_$.BYTES_PER_ELEMENT = 4;
 lime_utils__$UInt8Array_UInt8Array_$Impl_$.BYTES_PER_ELEMENT = 1;
+motion_actuators_SimpleActuator.actuators = [];
+motion_actuators_SimpleActuator.actuatorsLength = 0;
+motion_actuators_SimpleActuator.addedEvent = false;
+motion_Actuate.defaultActuator = motion_actuators_SimpleActuator;
+motion_Actuate.defaultEase = motion_easing_Expo.get_easeOut();
+motion_Actuate.targetLibraries = new haxe_ds_ObjectMap();
 openfl_Assets.cache = new openfl_AssetCache();
 openfl_Assets.dispatcher = new openfl_events_EventDispatcher();
 openfl_Lib.current = new openfl_display_MovieClip();
