@@ -28,6 +28,7 @@ class PlayState extends FlxState
 	var ground:Ground;
 	var dwarves:FlxTypedGroup<Dwarf>;
 	var worldDebug:Rect;
+	var splashes:FlxTypedGroup<Splash>;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -64,6 +65,16 @@ class PlayState extends FlxState
 			dwarves.add(dwarf);
 		}
 		add(dwarves);
+		
+		splashes = new FlxTypedGroup<Splash>();
+		splashes.maxSize = 10;
+		for (i in 0...splashes.maxSize)
+		{
+			var splash = new Splash();
+			splash.kill();
+			splashes.add(splash);
+		}
+		add(splashes);
 		
 		
 		FlxG.camera.follow(hero.head, FlxCamera.STYLE_PLATFORMER, new FlxPoint(-250, 0), 10);
@@ -136,7 +147,11 @@ class PlayState extends FlxState
 	{
 		if (hero.isSteppingDown())
 		{
-			dwarf.y=100;
+			var splash = splashes.recycle(Splash);
+			splash.setPosition(dwarf.x + dwarf.width / 2, dwarf.y + dwarf.height);
+			splash.start();
+			add(splash);
+			dwarf.kill();
 		}
 	}
 	
