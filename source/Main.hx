@@ -5,6 +5,7 @@ import flash.display.StageAlign;
 import flash.display.StageScaleMode;
 import flash.events.Event;
 import flash.Lib;
+import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
 
@@ -47,6 +48,12 @@ class Main extends Sprite
 		}
 		
 		setupGame();
+		
+		#if debug
+		FlxG.debugger.visible = true;
+		FlxG.watch.add(FlxG.mouse, "x");
+		FlxG.watch.add(FlxG.mouse, "y");
+		#end
 	}
 	
 	private function setupGame():Void
